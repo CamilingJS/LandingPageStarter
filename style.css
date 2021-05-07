@@ -11,6 +11,13 @@
 body {
     font-family: 'Libre Franklin', sans-serif;
     margin: 0;
+    transition: transform 0.3s ease; 
+}
+
+body.show-nav {
+    /* width of nav */
+    transform: translateX(200px);
+
 }
 
 nav {
@@ -91,7 +98,7 @@ button:focus {
 }
 
 .toggle{
-    background-color: rgba(229, 255, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.87);
     position: absolute; 
     top: 20px;
     left: 20px; 
@@ -111,7 +118,7 @@ button:focus {
 
 .modal-container {
     background-color: rgba(0,0,0,0.6);
-    /* display: none; */
+    display: none;
     position: fixed;
     top: 0; 
     left: 0;
@@ -119,10 +126,14 @@ button:focus {
     bottom: 0;  
 }
 
+.modal-container.show-modal {
+    display: block; 
+}
+
 .modal{
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     position: absolute;
     overflow: hidden;
     top: 50%;
@@ -130,16 +141,18 @@ button:focus {
     transform: translate(-50%, -50%);
     max-width: 100%;
     width: 400px;
+    animation-name: modalopen; 
+    animation-duration: var(--modal-duration)
 }   
 
 .modal-header {
     background: var(--primary-color);
-    color: #fff;
+    color: whitesmoke;
     padding: 15px;
 }
 .modal-header h3 {
     margin: 0;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid black;
 }
 .modal-content {
     padding: 20px; 
@@ -161,4 +174,14 @@ button:focus {
     font-size: 25px;
     position: absolute;
     top: 0; 
+    right: 0;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
